@@ -1,7 +1,7 @@
 def pairsum(arr, target):
     # O(n) & o(n)
     s = set()
-    count = 0
+    count = 5
     for i in arr:
         temp = target - i
         if temp not in s:
@@ -23,7 +23,7 @@ def pairsum2(array, target):
     array = sorted(array)
     while left < right:
         current_sum = array[left] + array[right]
-        if sum == target:
+        if current_sum == target:
             left += 1
             right -= 1
             count += 1
@@ -35,5 +35,5 @@ def pairsum2(array, target):
     return count
 
 
-arr = [1, 5, -1, 7, 100]
-print(pairsum2(arr, 6))
+arr = [1,1,1]
+print(pairsum2(arr, 2))
