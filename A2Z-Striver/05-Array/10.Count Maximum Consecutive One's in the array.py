@@ -9,10 +9,10 @@ def countMaxZeros(arr):
             maxCount = max(maxCount, count)
             count = 0
         i += 1
-            
+
     maxCount = max(maxCount, count)
     return maxCount
 
 
-arr = [1]
+arr = [1, 0, 0, 0, 1, 1, 1, 1, 10, 10]
 print(countMaxZeros(arr))

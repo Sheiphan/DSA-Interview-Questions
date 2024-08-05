@@ -16,3 +16,4 @@ k = 3
 s = Solution()
 s.rotate(nums, k)
 print(nums)
+# [5, 6, 7, 1, 2, 3, 4]

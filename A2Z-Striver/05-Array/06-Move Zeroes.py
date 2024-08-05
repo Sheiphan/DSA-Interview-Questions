@@ -12,6 +12,6 @@ class Solution:
         return nums
 
 
-nums = [1, 1, 0, 3, 12]
+nums = [0, 0, 2, 3, 2, 0, 0, 4, 5, 1]
 s = Solution()
 print(s.moveZeroes(nums))

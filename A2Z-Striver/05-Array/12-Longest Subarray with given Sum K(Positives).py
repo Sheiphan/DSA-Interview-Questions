@@ -1,5 +1,4 @@
 def subarrayWithGivenSum(k, arr):
-    sorted(arr)
     n = len(arr)
     maxCount = 0
     for i in range(n):
@@ -14,9 +13,33 @@ def subarrayWithGivenSum(k, arr):
     return maxCount
 
 
-k = 15
-arr = [-13, 0, 6, 15, 16, 2, 15, -12, 17, -16, 0, -3, 19, -3, 2, -9, -6]
+k = 10
+arr = [2, 3, 5, 1, 9]
 print(subarrayWithGivenSum(k, arr))
+
+
+def getLongestusingPrefixSum(arr, k):
+    prefix_sum = {}
+    Sum = 0
+    max_length = 0
+    
+    for i in range(len(arr)):
+        Sum += arr[i]
+        
+        # Check if the current sum is equal to k
+        if Sum == k:
+            max_length = i + 1
+        
+        # If the sum - k is in the prefix_sum, update the max_length
+        if (Sum - k) in prefix_sum:
+            max_length = max(max_length, i - prefix_sum[Sum - k])
+        
+        # Only add the sum to prefix_sum if it is not already there
+        # to ensure we get the longest sub-array
+        if Sum not in prefix_sum:
+            prefix_sum[Sum] = i
+    
+    return max_length
 
 
 def getLongestSubarray(a, k):
@@ -45,8 +68,9 @@ def getLongestSubarray(a, k):
 
 
 if __name__ == "__main__":
-    a = [2, 3, 5, 1, 9]
-    k = 10
+    a = [1, 2, 3, 1, 1, 1, 1, 4, 2, 3]
+    k = 3
 
     length = getLongestSubarray(a, k)
     print(f"The length of the longest subarray is: {length}")
+    getLongestusingPrefixSum(a, k)
