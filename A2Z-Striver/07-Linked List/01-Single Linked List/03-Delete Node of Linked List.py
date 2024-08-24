@@ -24,6 +24,44 @@ def delete_tail(head):
     return head
 
 
+# delete the head
+def delete_head(head):
+    if head is None:
+        return head
+
+    head = head.next
+
+    return head
+
+
+# delete Kth element
+def delete_K_Node(k):
+    count = 1
+    prev = None
+    temp = head
+
+    while temp is not None:
+        if count == k:
+            prev.next = prev.next.next
+            break
+        prev = temp
+        temp = temp.next
+        count += 1
+
+
+# delete the element
+def delete_Node(node):
+    prev = None
+    temp = head
+
+    while temp is not None:
+        if temp.data == node:
+            prev.next = prev.next.next
+            break
+        prev = temp
+        temp = temp.next
+
+
 # Function to print the linked list
 def print_ll(head):
     while head is not None:
@@ -38,13 +76,20 @@ if __name__ == "__main__":
 
     # Create the linked list with nodes initialized with array values
     head = Node(arr[0])
-    head.next = Node(arr[1])
-    head.next.next = Node(arr[2])
-    head.next.next.next = Node(arr[3])
-    head.next.next.next.next = Node(arr[4])
+
+    temp = head
+    for i in range(1, len(arr)):
+        temp.next = Node(arr[i])
+        temp = temp.next
+
+    print(f"Original LL: {arr}")
 
     # Delete the tail of the linked list
-    head = delete_tail(head)
+    # head = delete_tail(head)
+
+    # head = delete_head(head)
+    delete_K_Node(3)
+    # delete_Node(7)
 
     # Print the modified linked list
     print_ll(head)
